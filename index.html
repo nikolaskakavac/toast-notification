@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Toast Notification</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src="https://kit.fontawesome.com/a2a43858e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="buttons">
+        <button onclick="showToast(successMsg)">Uspešno</button>
+        <button onclick="showToast(errorMsg)">Greška</button>
+        <button onclick="showToast(invalidMsg)">Nevažeći</button>
+    </div>
+    <div id="toastBox">
+
+    </div>
+    <script>
+        let toastBox=document.getElementById('toastBox');
+        let successMsg='<i class="fa-solid fa-circle-check"></i>Uspešna potvrda';
+        let errorMsg='<i class="fa-solid fa-circle-xmark"></i>Greška u potvrdi';
+        let invalidMsg='<i class="fa-solid fa-circle-exclamation"></i>Nevažeći, proverite opet';
+        function showToast(msg){
+            let toast=document.createElement('div');
+            toast.classList.add('toast');
+            toast.innerHTML=msg;
+            toastBox.appendChild(toast);
+            if(msg.includes('Greška')){
+                toast.classList.add('Greška');
+            }
+            if(msg.includes('Nevažeći')){
+                toast.classList.add('Nevažeći');
+            }
+            setTimeout(()=>{
+                toast.remove();
+            },6000);
+
+        }
+    </script>
+</body>
+</html>
